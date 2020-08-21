@@ -1,0 +1,89 @@
+{
+  "name": "umi-electron",
+  "description": "umi-electron",
+  "private": true,
+  "main": "main.js",
+  "version": "0.0.1",
+  "author": {
+    "name": "taonima",
+    "email": "1849252806@qq.com"
+  },
+  "scripts": {
+    "start": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi generate tmp",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage",
+    "electron-start": "cross-env NODE_ENV=development electron .",
+    "package-win": "cross-env NODE_ENV=production yarn build && electron-builder build --win --x64"
+  },
+  "build": {
+    "productName": "umi-electron",
+    "appId": "org.taonima.electron",
+    "files": [
+      "dist/",
+      "main.js"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "msi"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "rpm",
+        "snap",
+        "AppImage"
+      ],
+      "category": "Development"
+    },
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    }
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^5.0.12",
+    "@umijs/preset-react": "1.x",
+    "@umijs/test": "^3.2.16",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "umi": "^3.2.16",
+    "yorkie": "^2.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "electron": "5.0.10",
+    "electron-builder": "^20.38.2"
+  }
+}
