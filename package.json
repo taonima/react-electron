@@ -1,6 +1,7 @@
 {
   "name": "umi-electron",
   "description": "umi-electron",
+  "appId": "com.taonima.app",
   "private": true,
   "main": "main.js",
   "version": "0.0.1",
@@ -23,7 +24,8 @@
     "appId": "org.taonima.electron",
     "files": [
       "dist/",
-      "main.js"
+      "main.js",
+      "preload.js"
     ],
     "dmg": {
       "contents": [
@@ -43,7 +45,8 @@
       "target": [
         "nsis",
         "msi"
-      ]
+      ],
+      "artifactName": "${productName}-setup-${version}.${ext}"
     },
     "linux": {
       "target": [
@@ -74,6 +77,7 @@
     "@ant-design/pro-layout": "^5.0.12",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.2.16",
+    "electron-updater": "^4.3.1",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
