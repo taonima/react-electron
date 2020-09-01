@@ -4,7 +4,7 @@
   "appId": "com.taonima.app",
   "private": true,
   "main": "main.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {
     "name": "taonima",
     "email": "1849252806@qq.com"
@@ -16,7 +16,7 @@
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
-    "electron-start": "cross-env NODE_ENV=development electron .",
+    "electron-start": "electron .",
     "package-win": "cross-env NODE_ENV=production yarn build && electron-builder build --win --x64"
   },
   "build": {

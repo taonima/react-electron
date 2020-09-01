@@ -22,11 +22,15 @@ const createWindow = () => {
   //   process.env.NODE_ENV === 'development'
   //     ? 'http://localhost:8001'
   //     : `file://${__dirname}/dist/index.html`;
+  let reslove;
   if (process.env.NODE_ENV === 'development') {
-    mainWindow.loadURL('http://localhost:8001');
+    reslove = mainWindow.loadURL('http://localhost:8001');
   } else {
-    mainWindow.loadURL(`file://${__dirname}/dist/index.html`);
+    reslove = mainWindow.loadURL(`file://${__dirname}/dist/index.html`);
   }
+  reslove.then(() => {
+    mainWindow.webContents.send('version', packageInfo.version)
+  })
   mainWindow.openDevTools();
   mainWindow.on('closed', function () {
     mainWindow = null;
